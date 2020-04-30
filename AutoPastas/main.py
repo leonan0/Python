@@ -2,7 +2,6 @@ import datetime
 from arquivo import Arquivo
 from pasta import Pasta
 
-<<<<<<< HEAD
 diretorio_raiz = 'C:\\Users\\1572173\\source\\LEONAN\\Arquivos\\'
 a = datetime.datetime.now().strftime('%d%m%Y')
 b = datetime.datetime.now().strftime('%M%S%f')
@@ -19,18 +18,3 @@ pasta.deletar()
     nome = str(x)+'file_' + b + '.txt'
     arquivo = Arquivo(nome, diretorio)
     arquivo.criar()'''
-=======
-diretorio_raiz = 'D:\\Usuario\\Desktop\\Teste\\'
-a = datetime.datetime.now().strftime('%d%m%Y')
-b = datetime.datetime.now().strftime('%M%S%f')
-diretorio = diretorio_raiz + a +'\\'
-nome = 'file_' + b + '.txt'
-pasta = Pasta(diretorio)
-arquivo = Arquivo(nome, diretorio)
-
-pasta.criar()
-arquivo.criar()
-pasta.deletar()
-
-
->>>>>>> 474f3bdeaafbf4c21ccf05b07c613f9c4b06fd67

@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 from Lib import os,shutil
 from arquivo import Arquivo
-=======
-from Lib import os
->>>>>>> 474f3bdeaafbf4c21ccf05b07c613f9c4b06fd67
 
 class Pasta():
 
@@ -14,11 +10,7 @@ class Pasta():
     def criar(self):
         try:
             if self.existe == False:
-<<<<<<< HEAD
                 os.makedirs(self.caminho)
-=======
-                pasta = os.makedirs(self.caminho)
->>>>>>> 474f3bdeaafbf4c21ccf05b07c613f9c4b06fd67
                 self.existe = True
             else:
                 pass
@@ -32,7 +24,6 @@ class Pasta():
         except:
             pass
 
-<<<<<<< HEAD
     def deletar(self,caminho=False):
             shutil.rmtree(self.caminho)
 
@@ -66,20 +57,3 @@ class Pasta():
 
 
 
-=======
-    def deletar(self):
-        try:
-            if self.existe == True:
-                pasta = os.remove(self.caminho)
-            else:
-                pass
-        except:
-            pass
-
-    def situacao(self):
-        if os.path.exists(self.caminho):
-            return True
-        else:
-            return False
-            
->>>>>>> 474f3bdeaafbf4c21ccf05b07c613f9c4b06fd67
