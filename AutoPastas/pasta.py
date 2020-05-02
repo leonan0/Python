@@ -1,4 +1,5 @@
-from Lib import os
+from Lib import os,shutil
+import arquivo as Arquivo
 
 class Pasta():
 
@@ -9,7 +10,7 @@ class Pasta():
     def criar(self):
         try:
             if self.existe == False:
-                pasta = os.makedirs(self.caminho)
+                os.makedirs(self.caminho)
                 self.existe = True
             else:
                 pass
@@ -23,18 +24,50 @@ class Pasta():
         except:
             pass
 
-    def deletar(self):
+    def deletar(self,caminho=False):
+            shutil.rmtree(self.caminho)
+
+    def situacao(self):
         try:
-            if self.existe == True:
-                pasta = os.remove(self.caminho)
+            if os.path.exists(self.caminho):
+                return True
             else:
-                pass
+                return False
         except:
             pass
 
-    def situacao(self):
-        if os.path.exists(self.caminho):
-            return True
-        else:
-            return False
-            
+    def listar(self,caminho=True):
+        try:
+            if caminho == True:
+                lista = os.listdir(self.caminho)
+            else:
+                lista = os.listdir(caminho)
+            return lista
+        except:
+            pass
+
+    def arrumarPastas(self,separador, arg=False):
+        try:
+            lista = self.listar()
+            for item in lista:
+                arquivo = Arquivo.Arquivo(item,self.caminho)
+                if os.path.isfile(arquivo.path):
+                    x = arquivo.nome.split('.')[0]                
+                    x = x.split(separador)
+                    if arg != False:
+                        for a in arg:
+                            arquivo.diretorio = arquivo.diretorio + x[a] + '\\'
+                            pastax = Pasta(arquivo.diretorio)
+                            pastax.criar()
+                    else:
+                        for a in x:
+                                nomeArquivo = nomeArquivo + a + '\\'
+                                pastax = Pasta(nomeArquivo)
+                                pastax.criar()
+                    arquivo.mover(arquivo.diretorio + arquivo.nome)
+                else:
+                    continue
+        except:
+            pass
+
+
